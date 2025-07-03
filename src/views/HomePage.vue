@@ -1,56 +1,124 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
+    <ion-header>
       <ion-toolbar>
-        <ion-title>Blank</ion-title>
+        <ion-title>Registration</ion-title>
       </ion-toolbar>
     </ion-header>
 
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
+    <ion-content class="ion-padding">
+      <form @submit.prevent="submitForm">
+        <ion-item>
+          <ion-label position="floating">Full Name</ion-label>
+          <ion-input class="ion-margin-top" v-model="form.name" required></ion-input>
+        </ion-item>
 
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-      </div>
+        <ion-text color="danger" v-if="errors.name">
+          <p class="ion-padding-start">{{ errors.name }}</p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input class="ion-margin-top" v-model="form.email" type="email" required></ion-input>
+        </ion-item>
+        <ion-text color="danger" v-if="errors.email">
+          <p class="ion-padding-start">{{ errors.email }}</p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input class="ion-margin-top" v-model="form.password" type="password" required></ion-input>
+        </ion-item>
+        <ion-text color="danger" v-if="errors.password">
+          <p class="ion-padding-start">{{ errors.password }}</p>
+        </ion-text>
+
+        <ion-button expand="block" type="submit" class="ion-margin-top">Register</ion-button>
+      </form>
+
+      <ion-toast
+        :is-open="toastVisible"
+        :message="toastMessage" 
+        position="top"
+        duration="2000"
+        @didDismiss="toastVisible = false"
+        html
+      ></ion-toast>
     </ion-content>
   </ion-page>
 </template>
 
-<script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+<script setup>
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonButton,
+  IonText,
+  IonToast
+} from '@ionic/vue'
+import { reactive, ref } from 'vue'
+
+const form = reactive({
+  name: '',
+  email: '',
+  password: ''
+})
+
+const errors = ref({
+  name: '',
+  email: '',
+  password: ''
+})
+
+const toastVisible = ref(false)
+const toastMessage = ref('')
+
+const showSuccessToast = () => {
+  toastMessage.value = `
+  <ion-icon name="checkmark-circle" color="myblue" style="font-size: 20px; vertical-align: middle;"></ion-icon>
+  <span style="margin-left: 8px;">Registration Successful!</span>
+  `
+} 
+
+const validateForm = () => {
+  errors.value = { name: '', email: '', password: '' }
+  let valid = true
+
+  if (form.name.trim().length < 2) {
+    errors.value.name = 'Name must be at least 2 characters'
+    valid = false
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailPattern.test(form.email)) {
+    errors.value.email = 'Please enter a valid email address'
+    valid = false
+  }
+
+  if (form.password.length < 6) {
+    errors.value.password = 'Password must be at least 6 characters'
+    valid = false
+  }
+
+  return valid
+}
+
+const submitForm = () => {
+
+  if (!validateForm()) return
+
+  showSuccessToast()
+  
+  toastVisible.value = true
+  form.name = ''
+  form.email = ''
+  form.password = ''
+}
 </script>
 
-<style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-</style>

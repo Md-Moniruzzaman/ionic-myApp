@@ -1,2 +1,27 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+
+:root {
+    /* Existing Ionic color variables... */
+  
+    --ion-color-myblue: #1e90ff;
+    --ion-color-myblue-rgb: 30, 144, 255;
+    --ion-color-myblue-contrast: #ffffff;
+    --ion-color-myblue-contrast-rgb: 255, 255, 255;
+    --ion-color-myblue-shade: #1a80e0;
+    --ion-color-myblue-tint: #3399ff;
+  }
+
+/* Custom theme variables */
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        --ion-color-myblue: #4dabf7;
+        --ion-color-mygreen: #4caf50;
+        --ion-color-myblue-rgb: 77, 171, 247;
+        --ion-color-myblue-contrast: #000000;
+        --ion-color-myblue-contrast-rgb: 0, 0, 0;
+        --ion-color-myblue-shade: #3c92d1;
+        --ion-color-myblue-tint: #62b7f8;
+      }
+} */
+  

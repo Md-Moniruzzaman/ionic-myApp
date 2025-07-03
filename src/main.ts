@@ -34,6 +34,15 @@ import '@ionic/vue/css/palettes/dark.system.css';
 /* Theme variables */
 import './theme/variables.css';
 
+import { addIcons } from 'ionicons';
+import { checkmarkCircle, closeCircle, informationCircle } from 'ionicons/icons';
+
+addIcons({
+ 'checkmark-circle' :checkmarkCircle,
+ 'close-circle' : closeCircle,
+  'information-circle' : informationCircle
+});
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
