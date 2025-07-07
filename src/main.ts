@@ -38,8 +38,8 @@ import { addIcons } from 'ionicons';
 import { checkmarkCircle, closeCircle, informationCircle } from 'ionicons/icons';
 
 addIcons({
- 'checkmark-circle' :checkmarkCircle,
- 'close-circle' : closeCircle,
+  'checkmark-circle' :checkmarkCircle,
+  'close-circle' : closeCircle,
   'information-circle' : informationCircle
 });
 

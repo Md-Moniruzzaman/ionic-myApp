@@ -38,12 +38,14 @@
 
       <ion-toast
         :is-open="toastVisible"
-        :message="toastMessage" 
-        position="top"
+        message="Registration Successful!"
+        icon="checkmark-circle"
+        color="Success"
+        position="top-middle"
         duration="2000"
         @didDismiss="toastVisible = false"
-        html
-      ></ion-toast>
+      />
+
     </ion-content>
   </ion-page>
 </template>
@@ -77,14 +79,7 @@ const errors = ref({
 })
 
 const toastVisible = ref(false)
-const toastMessage = ref('')
 
-const showSuccessToast = () => {
-  toastMessage.value = `
-  <ion-icon name="checkmark-circle" color="myblue" style="font-size: 20px; vertical-align: middle;"></ion-icon>
-  <span style="margin-left: 8px;">Registration Successful!</span>
-  `
-} 
 
 const validateForm = () => {
   errors.value = { name: '', email: '', password: '' }
@@ -112,8 +107,6 @@ const validateForm = () => {
 const submitForm = () => {
 
   if (!validateForm()) return
-
-  showSuccessToast()
   
   toastVisible.value = true
   form.name = ''
