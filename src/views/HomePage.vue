@@ -7,6 +7,7 @@
     </ion-header>
 
     <ion-content class="ion-padding">
+      
       <form @submit.prevent="submitForm">
         <ion-item>
           <ion-label position="floating">Full Name</ion-label>
