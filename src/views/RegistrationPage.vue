@@ -1,8 +1,8 @@
 <template>
   <ion-page>
-    <ion-header  >
-      <ion-toolbar color="primary">
-        <ion-title class="ion-padding-top">Registration</ion-title>
+    <ion-header class="ion-padding-top" >
+      <ion-toolbar >
+        <ion-title class="ion-text-center">Registration</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -35,6 +35,20 @@
         </ion-text>
 
         <ion-button expand="block" type="submit" class="ion-margin-top">Register</ion-button>
+
+
+     <div class="ion-text-center">
+         <ion-text  color="medium"  >
+          <p class="ion-padding-top" >Already have an account? <a href="/home">Login here</a></p> 
+        </ion-text>
+     </div> 
+     <div class="ion-text-center ">
+         <ion-text  color="medium"  >
+          <p class="ion-padding-top" > <a href="/home">Home</a></p> 
+        </ion-text>
+     </div>
+
+
       </form>
 
       <ion-toast
@@ -42,7 +56,7 @@
         message="Registration Successful!"
         icon="checkmark-circle"
         color="Success"
-        position="top-middle"
+        position="botom-middle"
         duration="2000"
         @didDismiss="toastVisible = false"
       />
