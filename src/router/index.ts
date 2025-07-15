@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import HomePage from '../views/HomePage.vue';
 import RegistrationPage from '../views/RegistrationPage.vue';
+import CameraPage from '../views/CameraPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'home',
     component: HomePage
   },
+  {
+    path: '/camera',
+    name: 'camera',
+    component: CameraPage,
+  }
 ]
 
 const router = createRouter({

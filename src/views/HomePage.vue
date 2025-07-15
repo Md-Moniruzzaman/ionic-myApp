@@ -27,7 +27,7 @@
       <ion-list lines="full">
         <ion-item>
           <ion-label>Camera Check</ion-label>
-          <ion-button slot="end" router-link="/registration" fill="outline">Open</ion-button>
+          <ion-button slot="end" router-link="/camera" fill="outline">Open</ion-button>
         </ion-item>
 
         <ion-item>
@@ -75,7 +75,8 @@ import {
   IonList,
   IonItem,
   IonLabel,
-  IonButton,
+    IonButton,
+  
 } from '@ionic/vue';
 </script>
 
