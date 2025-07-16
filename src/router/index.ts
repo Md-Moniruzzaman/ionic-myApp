@@ -3,6 +3,7 @@ import { RouteRecordRaw } from 'vue-router';
 import HomePage from '../views/HomePage.vue';
 import RegistrationPage from '../views/RegistrationPage.vue';
 import CameraPage from '../views/CameraPage.vue';
+import LocationAccessUtilityPage from '../views/LocationAccessUtilityPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -23,7 +24,10 @@ const routes: Array<RouteRecordRaw> = [
     path: '/camera',
     name: 'camera',
     component: CameraPage,
-  }
+  },
+  {path: '/location',
+    name: 'location',
+    component: LocationAccessUtilityPage}
 ]
 
 const router = createRouter({

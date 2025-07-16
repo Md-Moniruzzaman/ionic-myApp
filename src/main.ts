@@ -36,6 +36,10 @@ import './theme/variables.css';
 
 import { addIcons } from 'ionicons';
 import { checkmarkCircle, closeCircle, informationCircle } from 'ionicons/icons';
+import {
+  IonBackButton,
+  // other Ion components if needed
+} from '@ionic/vue';
 
 addIcons({
   'checkmark-circle' :checkmarkCircle,
@@ -46,6 +50,8 @@ addIcons({
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
+
+  app.component('IonBackButton', IonBackButton)
 
 router.isReady().then(() => {
   app.mount('#app');

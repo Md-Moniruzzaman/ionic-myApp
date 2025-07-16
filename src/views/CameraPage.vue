@@ -1,7 +1,7 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
+    <ion-header class="ion-padding-top">
+      <ion-toolbar color="primary">
         <ion-buttons slot="start">
           <ion-back-button defaultHref="/home" />
         </ion-buttons>
@@ -10,19 +10,27 @@
     </ion-header>
 
     <ion-content class="ion-padding">
-      <ion-button expand="block" @click="takePhoto">Take Photo</ion-button>
+      <ion-button  expand="block" @click="takePhoto">Take Photo</ion-button>
 
       <div v-if="photo">
-        <img :src="photo" alt="Captured Photo" style="margin-top: 20px; width: 100%;" />
+        <img :src="photo" alt="Captured Photo" style="margin-top: 20px; width: 90%" />
       </div>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup>
-import { IonPage, IonHeader, IonToolbar, IonButtons, IonTitle, IonContent, IonButton } from '@ionic/vue';
-import { ref } from 'vue';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonTitle,
+  IonContent,
+  IonButton,
+} from "@ionic/vue";
+import { ref } from "vue";
+import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
 
 const photo = ref(null);
 
@@ -35,7 +43,7 @@ const takePhoto = async () => {
     });
     photo.value = image.dataUrl;
   } catch (error) {
-    console.error('Camera error:', error);
+    console.error("Camera error:", error);
   }
 };
 </script>

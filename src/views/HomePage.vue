@@ -32,7 +32,7 @@
 
         <ion-item>
           <ion-label>Location Access</ion-label>
-          <ion-button slot="end" router-link="/login" fill="outline">Check</ion-button>
+          <ion-button slot="end" router-link="/location" fill="outline">Check</ion-button>
         </ion-item>
 
         <ion-item>
