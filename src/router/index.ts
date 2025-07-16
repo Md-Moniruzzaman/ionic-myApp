@@ -4,6 +4,7 @@ import HomePage from '../views/HomePage.vue';
 import RegistrationPage from '../views/RegistrationPage.vue';
 import CameraPage from '../views/CameraPage.vue';
 import LocationAccessUtilityPage from '../views/LocationAccessUtilityPage.vue';
+import DeviceInfoPage  from '../views/DeviceInfoPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -27,7 +28,14 @@ const routes: Array<RouteRecordRaw> = [
   },
   {path: '/location',
     name: 'location',
-    component: LocationAccessUtilityPage}
+    component: LocationAccessUtilityPage,
+  },
+  {
+    path: '/device-info',
+    name: 'device-info',
+    component: DeviceInfoPage,
+  }
+  
 ]
 
 const router = createRouter({

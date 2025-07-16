@@ -37,7 +37,7 @@
 
         <ion-item>
           <ion-label>Device Details</ion-label>
-          <ion-button slot="end" router-link="/login" fill="outline">View</ion-button>
+          <ion-button slot="end" router-link="/device-info" fill="outline">View</ion-button>
         </ion-item>
 
         <ion-item>
