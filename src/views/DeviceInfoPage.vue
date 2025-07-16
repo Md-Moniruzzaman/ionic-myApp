@@ -40,10 +40,9 @@
               <ion-spinner name="crescent" class="ion-margin-end"></ion-spinner>
               Fetching location and address...
             </div>
-
-            <ion-text color="danger" v-if="loadError">
-              <p class="ion-padding-top"><strong>Error:</strong> {{ loadError }}</p>
-            </ion-text>
+          </ion-text>
+          <ion-text color="danger" v-if="loadError">
+            <p class="ion-padding-top"><strong>Error:</strong> {{ loadError }}</p>
           </ion-text>
         </ion-card-content>
       </ion-card>
@@ -65,6 +64,8 @@ import {
   IonCardTitle,
   IonCardContent,
   IonButton,
+  IonText,
+  IonSpinner,
 } from "@ionic/vue";
 
 import { ref } from "vue";
@@ -85,8 +86,6 @@ const loadDeviceInfo = async () => {
     deviceInfo.value.isCharging = batteryInfo.isCharging;
     const language = await Device.getLanguageCode();
     deviceInfo.value.language = language.value;
-    const platform = await Device.getPlatform();
-    deviceInfo.value.platform = platform.platform;
     const uidInfo = await Device.getId();
     deviceInfo.value.uuid = uidInfo.uuidinf;
   } catch (error) {
