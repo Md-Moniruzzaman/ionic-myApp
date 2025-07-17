@@ -1,64 +1,98 @@
 <template>
   <ion-page>
-    <ion-header
-      ><ion-toolbar>
+  <div inert></div>
+    <ion-header>
+      <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="/home"></ion-back-button>
+          <ion-back-button defaultHref="/home" />
         </ion-buttons>
-        <ion-title>Connectivity Check</ion-title>
-      </ion-toolbar></ion-header>
+        <ion-title>Network Connectivity</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
     <ion-content class="ion-padding">
-        <ion-card>
+
+      <!-- Warning if offline -->
+      <ion-card color="danger" v-if="!isConnected">
         <ion-card-header>
-          <ion-card-title>Check Device Connectivity</ion-card-title>
+          <ion-card-title>Offline</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-button expand="block" @click="checkConnectivity">
-            Check Connectivity
-          </ion-button>
-
-          <div v-if="connectivityStatus" class="ion-margin-top">
-            <p><strong>Status:</strong> {{ connectivityStatus }}</p>
-          </div>
-
-          <ion-text
-            color="medium"
-            v-if="isLoading"
-            class="ion-text-center ion-margin-top"
-          >
-            <div class="d-flex-start">
-              <ion-spinner name="crescent" class="ion-margin-end"></ion-spinner>
-              Checking connectivity...
-            </div>
-          </ion-text>
-          <ion-text color="danger" v-if="loadError">
-            <p class="ion-padding-top"><strong>Error:</strong> {{ loadError }}</p>
+          <ion-text color="light">
+            <p>You are currently offline. Please check your internet connection.</p>
+            <ion-button expand="block" fill="outline" @click="checkNetworkStatus">
+              Retry
+            </ion-button>
           </ion-text>
         </ion-card-content>
-        </ion-card>
+      </ion-card>
+
+      <!-- Status if online -->
+      <ion-card v-else>
+        <ion-card-header>
+          <ion-card-title>Online</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-text>
+            <p><strong>Connected:</strong> {{ isConnected ? 'Yes' : 'No' }}</p>
+            <p><strong>Connection Type:</strong> {{ connectionType }}</p>
+            <ion-button expand="block" @click="checkNetworkStatus">Refresh</ion-button>
+          </ion-text>
+        </ion-card-content>
+      </ion-card>
+
     </ion-content>
   </ion-page>
 </template>
 
 <script setup>
-import { IonPage, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonText, IonSpinner } from '@ionic/vue';
-import { ref } from 'vue';
-const connectivityStatus = ref(null);
-const isLoading = ref(false);
-const loadError = ref(null);
-const checkConnectivity = async () => {
-  isLoading.value = true;
-  loadError.value = null;
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonBackButton,
+  IonTitle,
+  IonContent,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonText,
+  IonButton,
+} from '@ionic/vue';
 
+import { ref, onMounted, onUnmounted } from 'vue';
+import { Network } from '@capacitor/network';
+import { onIonViewWillLeave } from '@ionic/vue';
+
+const isConnected = ref(false);
+const connectionType = ref('unknown');
+
+// Remove focus when page is about to be hidden
+onIonViewWillLeave(() => {
+  document.activeElement?.blur()
+})
+
+const checkNetworkStatus = async () => {
   try {
-    // Simulate a connectivity check
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    connectivityStatus.value = 'Device is connected to the internet';
+    const status = await Network.getStatus();
+    isConnected.value = status.connected;
+    connectionType.value = status.connectionType;
   } catch (error) {
-    loadError.value = 'Failed to check connectivity';
-  } finally {
-    isLoading.value = false;
+    console.error('Error checking network:', error);
   }
 };
+
+onMounted(() => {
+  checkNetworkStatus();
+  Network.addListener('networkStatusChange', status => {
+    isConnected.value = status.connected;
+    connectionType.value = status.connectionType;
+  });
+});
+
+onUnmounted(() => {
+  Network.removeAllListeners(); // clean up on page leave
+});
 </script>
