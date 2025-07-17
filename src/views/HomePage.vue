@@ -6,20 +6,22 @@
         <ion-buttons slot="start">
           <ion-back-button defaultHref="/registration"></ion-back-button>
         </ion-buttons>
-        <ion-title class="ion-text-center">Home Kitchen</ion-title>
+        <ion-title class="ion-text-center">IONIC Kitchen</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <!-- Main Content -->
     <ion-content class="ion-padding">
-
       <!-- Welcome Text -->
       <ion-card class="ion-text-center">
         <ion-card-header>
-          <ion-card-title>Welcome to Home Kitchen</ion-card-title>
+          <ion-card-title>Welcome to IONIC Kitchen</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p>This dashboard provides system diagnostic and device-level tools for field testing and integration.</p>
+          <p>
+            This dashboard provides system diagnostic and device-level tools for field
+            testing and integration.
+          </p>
         </ion-card-content>
       </ion-card>
 
@@ -37,7 +39,9 @@
 
         <ion-item>
           <ion-label>Device Details</ion-label>
-          <ion-button slot="end" router-link="/device-info" fill="outline">View</ion-button>
+          <ion-button slot="end" router-link="/device-info" fill="outline"
+            >View</ion-button
+          >
         </ion-item>
 
         <ion-item>
@@ -75,9 +79,8 @@ import {
   IonList,
   IonItem,
   IonLabel,
-    IonButton,
-  
-} from '@ionic/vue';
+  IonButton,
+} from "@ionic/vue";
 </script>
 
 <style scoped>
