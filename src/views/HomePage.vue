@@ -2,7 +2,7 @@
   <ion-page>
     <!-- Header -->
     <ion-header class="ion-padding-top">
-      <ion-toolbar color="primary">
+      <ion-toolbar>
         <ion-buttons slot="start">
           <ion-back-button defaultHref="/registration"></ion-back-button>
         </ion-buttons>
@@ -51,7 +51,7 @@
 
         <ion-item>
           <ion-label>Connectivity Check</ion-label>
-          <ion-button slot="end" router-link="/login" fill="outline">Ping</ion-button>
+          <ion-button slot="end" router-link="/connection_check" fill="outline">Ping</ion-button>
         </ion-item>
 
         <ion-item>

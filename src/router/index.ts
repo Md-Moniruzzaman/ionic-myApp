@@ -5,6 +5,7 @@ import RegistrationPage from '../views/RegistrationPage.vue';
 import CameraPage from '../views/CameraPage.vue';
 import LocationAccessUtilityPage from '../views/LocationAccessUtilityPage.vue';
 import DeviceInfoPage  from '../views/DeviceInfoPage.vue';
+import CheckDeviceConnectivity from '@/views/CheckDeviceConnectivity.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,6 +35,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/device-info',
     name: 'device-info',
     component: DeviceInfoPage,
+  },
+
+  {
+    path: '/connection_check',
+    name: 'connection check',
+    component: CheckDeviceConnectivity
   }
   
 ]
