@@ -6,6 +6,7 @@ import CameraPage from '../views/CameraPage.vue';
 import LocationAccessUtilityPage from '../views/LocationAccessUtilityPage.vue';
 import DeviceInfoPage  from '../views/DeviceInfoPage.vue';
 import CheckDeviceConnectivity from '@/views/CheckDeviceConnectivity.vue';
+import ConnectedDvicePage from '@/views/ConnectedDvicePage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -41,6 +42,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/connection_check',
     name: 'connection check',
     component: CheckDeviceConnectivity
+  },
+
+  {
+    path: '/connected-devices',
+    name: 'connected-devices',
+    component: ConnectedDvicePage
   }
   
 ]
@@ -51,3 +58,5 @@ const router = createRouter({
 })
 
 export default router
+
+

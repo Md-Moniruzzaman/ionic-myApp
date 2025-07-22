@@ -24,6 +24,7 @@
             <p><strong>OS Version:</strong> {{ deviceInfo.osVersion }}</p>
             <p><strong>Manufacturer:</strong> {{ deviceInfo.manufacturer }}</p>
             <p><strong>UUID:</strong> {{ deviceInfo.uuid }}</p>
+            
             <p><strong>WebView Version:</strong> {{ deviceInfo.webViewVersion }}</p>
             <p><strong>Get UUID:</strong> {{ deviceInfo.uidInf }}</p>
             <p><strong>Device Charging Status:</strong> {{ deviceInfo.isCharging }}</p>
